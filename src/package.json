@@ -1,0 +1,9 @@
+{
+  "name": "overtimer",
+  "main": "index.html",
+  "version": "0.1",
+  "window": {
+    "show": false,
+    "show_in_taskbar": false
+  }
+}

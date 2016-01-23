@@ -1,0 +1,26 @@
+{
+  "name": "overtimer",
+  "version": "0.1.0",
+  "moduleType": [
+    "amd"
+  ],
+  "authors": [
+    "Sascha Issbruecker"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.15",
+    "jquery": "~2.1.1",
+    "moment": "~2.8.4",
+    "ramda": "~0.8.0",
+    "lokijs": "*"
+  }
+}
