@@ -14,11 +14,11 @@ define(['loki', 'ramda'], function (loki, r) {
     var hasTotals = r.find(r.propEq('name', 'totals'), existingCollections);
     var totalsCollection = hasTotals ? store.db.getCollection('totals') : store.db.addCollection('totals');
 
-    store.selectAllTotals = function() {
+    store.selectAllTotals = function () {
         return totalsCollection.find();
     };
 
-    store.selectTotalsSince = function(from) {
+    store.selectTotalsSince = function (from) {
         return totalsCollection.find({'timestamp': {'$gte': from}});
     };
 
@@ -33,7 +33,12 @@ define(['loki', 'ramda'], function (loki, r) {
         totalsCollection.remove(totalsSince);
 
         // TODO: Workaround for bug: Set maxId manually to 0 if there are no more entries
-        if(totalsCollection.data.length == 0) totalsCollection.maxId = 0;
+        if (totalsCollection.data.length == 0) totalsCollection.maxId = 0;
+    };
+
+    store.reset = function () {
+        store.db.removeCollection('totals');
+        totalsCollection = store.db.addCollection('totals');
     };
 
     store.save = function () {

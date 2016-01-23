@@ -18,10 +18,11 @@ requirejs([
 
     // Main program
     requirejs([
+        'store',
         'updater',
         'calculator',
         'config'
-    ], function(updater, calculator, config) {
+    ], function(store, updater, calculator, config) {
 
         // Create tray / menu
         var gui = require('nw.gui');
@@ -33,12 +34,15 @@ requirejs([
         var totalMenuItem = new gui.MenuItem({ label: 'Total', enabled: false });
         var refreshMenuItem = new gui.MenuItem({ label: 'Refresh...'});
         var closeMenuItem = new gui.MenuItem({ label: 'Close'});
+        var resetMenuItem = new gui.MenuItem({ label: 'Reset cache'});
 
         menu.append(weeklyMenuItem);
         menu.append(totalMenuItem);
         menu.append(new gui.MenuItem({ type: 'separator'}));
         menu.append(refreshMenuItem);
         menu.append(closeMenuItem);
+        menu.append(new gui.MenuItem({ type: 'separator'}));
+        menu.append(resetMenuItem);
 
         tray.menu = menu;
 
@@ -50,6 +54,12 @@ requirejs([
         // Execute update when refresh is clicked
         refreshMenuItem.click = function() {
             updater.update();
+        };
+
+        // Reset store when reset is clicked
+        resetMenuItem.click = function() {
+            store.reset();
+            store.save();
         };
 
         // Update labels when updater is running

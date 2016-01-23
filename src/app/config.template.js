@@ -7,8 +7,8 @@ define([
 
     var config = {
 
-        freckleSubDomain: 'sissbruecker',
-        freckleApiToken: '555s5oohc8fpmtwur08scqrmqrxbrsg',
+        freckleSubDomain: '<your-subdomain>',
+        freckleApiToken: '<your-api-token>',
 
         workdays: [1, 2, 3, 4, 5], // Sunday = 0 ... Saturday = 6
         workPerDay: 7 * 60 * 60 * 1000, // How much work per day (milliseconds)

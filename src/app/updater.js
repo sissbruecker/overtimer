@@ -36,6 +36,10 @@ define([
                 .seconds(0)
                 .milliseconds(0);
 
+            var minDateLimit = moment(config.startDate);
+
+            if (from.isBefore(minDateLimit)) from = minDateLimit;
+
             return api.loadEntries(from);
         });
 
@@ -50,7 +54,7 @@ define([
         });
 
         // Save totals
-        chain = chain.then(function() {
+        chain = chain.then(function () {
 
             // Find minimum date
             var minDate = r.min(r.map(r.prop('timestamp'))(totals));
@@ -91,7 +95,7 @@ define([
 
         var uniqueDates = r.map(r.prop('timestamp'))(r.uniqWith(dateEquals)(entries));
 
-        $.each(uniqueDates, function(i, date) {
+        $.each(uniqueDates, function (i, date) {
 
             var entriesForDate = r.filter(r.propEq('timestamp', date))(entries);
 
