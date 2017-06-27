@@ -68,9 +68,10 @@ module.exports = function (grunt) {
         // Build node-webkit app
         nwjs: {
             options: {
-                platforms: ['osx'/*, 'win'*/],
+                platforms: ['osx64', 'win32', 'win64'],
                 buildDir: './build',
-                version: '0.12.3'
+                version: '0.12.3',
+                flavor: 'normal'
             },
             src: ['build/temp/**/*']
         }
